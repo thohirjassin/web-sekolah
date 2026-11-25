@@ -6,4 +6,10 @@ RUN docker-php-ext-install pdo pdo_mysql mysqli
 # Aktifkan mod_rewrite Apache
 RUN a2enmod rewrite
 
+# Salin seluruh kode aplikasi dari folder src ke dalam image
+COPY ./src /var/www/html/
+
+# Atur hak akses folder web
+RUN chown -R www-data:www-data /var/www/html
+
 WORKDIR /var/www/html
